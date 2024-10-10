@@ -10,7 +10,8 @@ namespace sistema_gestion_inventario.databases
     internal class MySqlConnectionClass
     {
         private string connectionString;
-        public MySqlConnectionClass() {
+        public MySqlConnectionClass()
+        {
             // Reemplaza los valores por los datos de tu servidor de MySQL
             connectionString = "server=localhost;port=3307;database=db;uid=user;pwd=password;";
         }
