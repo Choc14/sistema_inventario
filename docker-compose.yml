@@ -1,0 +1,24 @@
+services:
+  # Servicio de la base de datos MYSQL
+  db:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_HOST=''
+    ports:
+      - "3306:3307"
+    volumes:
+      - /tmp/app/mysqld:/var/run/mysqld
+      - my-db-project:/var/lib/mysql
+    networks:
+      - app_sistema_gestion
+
+volumes:
+  my-db-project:
+  
+networks:
+  app_sistema_gestion:
+    driver: bridge

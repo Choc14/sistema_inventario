@@ -1,0 +1,34 @@
+-- CREACION DE LA BASE DE DATOS DESDE CERO
+DROP DATABASE IF EXISTS bd_proyecto;
+
+CREATE DATABASE bd_proyecto;  
+
+USE bd_proyecto;
+
+-- CREACION DE LA TABLA DE USUARIO
+CREATE TABLE Usuario(
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    genero ENUM('M','F') NOT NULL,
+    nombre_usuario VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP  
+);
+
+-- CREACION DE LA TABLA DE PRODUCTOS
+CREATE TABLE Producto(
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT UNSIGNED NOT NULL,
+    codigo CHAR(50) UNIQUE NOT NULL,
+    nombre VARCHAR(150) NOT NULL,
+    cantidad INT,
+    precio DECIMAL(10,2) NOT NULL,
+    fecha_ingreso DATETIME DEFAULT CURRENT_TIMESTAMP,  
+    categoria CHAR(75) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id) ON DELETE CASCADE
+);
+
+DESC Usuario;
+DESC Producto;
